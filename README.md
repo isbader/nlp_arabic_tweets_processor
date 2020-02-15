@@ -14,8 +14,8 @@
 
 ### Team members:
 
-**Bader Abanmi**,
-**Yasir Almutairy**
-**Abdullah Alnomany**
+- **Bader Abanmi**,
+- **Yasir Almutairy**
+- **Abdullah Alnomany**
  
 **Supervised by Dr. Eslam Al Maghayreh**
