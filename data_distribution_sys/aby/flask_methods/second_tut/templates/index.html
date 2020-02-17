@@ -7,17 +7,17 @@
 </head>
 <body>
     <h1>Register</h1>
-    <form>
+    <form action="/register" method="POST">
         <input name="name" placeholder="name" type="text">
         <input name="student_id" placeholder="43*******" type="text">
         <button name="submit">submit</button>
         <h3>please choose the number of tweets</h3>
         <select name="tweet_num">
-            <option value="1500">1500</option>
+            <option disabled selected>1500</option>
             <option value="1000">1000</option>
             <option value="500">500</option>
         </select>
-
+ 
     </form>
 </body>
 </html>
