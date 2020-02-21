@@ -38,40 +38,53 @@
 					</br>
 					</br> 
 				</br>
-					<p>Aby is simple user interface that let you to dealing  with your </br>Arabic sentiments data to clean it until the resualt and Visualization </p>
+					<p style="font-size:150%;color: black;"> Aby is simple user interface that let you to dealing  with your </br>Arabic sentiments data to clean it until the resualt and Visualization </p>
 					<ul class="actions">
 						<li><a href="#two" class="button scrolly">Get Started</a></li>
 					</ul>
 				</div>
 			</section>
 
-		
-	<!-- 		<div align="center" class="content" id="start">  </br> </br></br> </br></br> <h1>Steps </h1>	 </div> -->
+		<br/>
+		<br/>
+		<br/>
+		<br/>
 
+
+
+			<div class="container"style="text-align: center;" >
+				<h2 style="color: #25a2c3; font-size:xx-large;position:static;">How Can I Start ? </h2>
+
+			</div>
+		
+				
 
 				<!-- part One -->
+				`
+
 				<section id="one" class="wrapper">
 					<div class="inner flex flex-3">
 						<div class="flex-item left">
 							<div>
-								<h3>step one </h3>
-								<p>each step will have small describtion <br /> </p>
+								<h3 style="font-size:150%;">Step 1 </h3>
+								<p> Upload your Dataset and make sure its (.csv) type </p>
 							</div>
 							<div>
-								<h3>step two</h3>
-								<p>each step will have small describtion <br /> </p>
+								<br/>
+								<h3 style="font-size:150%;">Step 2</h3>
+								<p>each stesfwefwp will have small describtion </p>
 							</div>
 						</div>
 						<div class="flex-item image fit round">
-							<img src="images/pic01.jpg" alt="" />
+						
 						</div>
 						<div class="flex-item right">
 							<div>
-								<h3>step three</h3>
+								<h3 style="font-size:150%;">Step 3</h3>
 								<p>each step will have small describtion <br /> </p>
 							</div>
 							<div>
-								<h3>step four</h3>
+								<h3 style="font-size:150%;">Step 4</h3>
 								<p>each step will have small describtion <br /> </p>
 							</div>
 						</div>
@@ -80,14 +93,32 @@
 
 
 
-												<!--  part Two -->
-			<section id="two" class="wrapper style1 special">
-				<div class="inner">
-					<h2>upload your file here ! </h2>
+												<!--  part part of uploading file -->
+												
+
+
+					{%block content %}
+
+					<section id="two" class="wrapper style1 special">
+						<div class="inner">
+							<h2>Upload Your Dataset File Here ! </h2>
+							<div class="container" >
+							  <form method="POST" class = "form-group" enctype="multipart/form-data" action="{{url_for('datauploads')}}">
+								<input type="file" name="csv_data" accept=".csv">
+								<input type="submit" class="btn btn-primary mb-2" value="Show Data">
+								<input type="reset" value="Reset" class="btn btn-danger mb-2">
+							</form>
+							 </div>
+
+
+						  </form>
+						
+
+
+   
 					<figure>
-					    <blockquote>
-					        "here will be button to upload the file "
-					    </blockquote>
+						
+					   
 					    
 					</figure>
 				</div>
@@ -95,4 +126,7 @@
 
 
 	</body>
+	{% endblock %}
 </html>
+
+<!--<input type="file" id="csvFileInput" onchange="handleFiles(this.files)"accept=".csv">-->
