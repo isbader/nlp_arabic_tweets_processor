@@ -1,0 +1,14 @@
+Still working on the page , facing some errors related to packages and trying to understand flask more . trying to put a button to upload a file but it doesn't work until now .
+
+
+
+
+
+
+--------------------------------------------------------
+The upload button is now work without database it will stored in (uploads file) 
+
+and added show button file to see the dataset
+
+The next stage will try to add clean button and connect it to the script of cleaning 
+ 
