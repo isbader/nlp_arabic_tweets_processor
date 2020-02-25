@@ -8,9 +8,6 @@ from nltk.corpus import stopwords
 import os
 
 
-
-
-
 ar_stp = pd.read_fwf('stop_words.txt', header=None)
 stop_words = set(stopwords.words('arabic') + list(ar_stp[0]))
 
@@ -174,6 +171,7 @@ def _extract_emojis(str):
   return ''.join(c for c in str if c in emoji.UNICODE_EMOJI)
 
 def view_emoticon(arr):
+
     """
     takes an array of tweets and return the the emoticon present in a tweet
     Arguments:
@@ -184,7 +182,6 @@ def view_emoticon(arr):
     """
     arr_emojies = [re.findall(emoji.get_emoji_regexp(), text) for text in arr]
     arr_emot = [_get_emoticon(item) for item in arr_emojies]
-
     new_arr = []
     for emoticon in arr_emot:
         new_arr.append(' '.join(emoticon))
@@ -206,41 +203,6 @@ def term_freq(arr):
     df.columns = ['words','tf']
     return df
 
-def inverse_term_freq(arr):
-    """
-    takes an array of tweets and return the inverse freqency of a word in a tweet
-    Arguments:
-    arr: Series. array of tweets.
-
-    Returns:
-    a dataframe of the inverse frequency of words
-    """
-    n = arr.shape[0] # number of rows [tweets][documents]
-
-    tf = term_freq(arr)
-    for i, word in enumerate(tf['words']):
-        sum_words_present = sum(arr.str.contains(word, regex=False))
-        log = np.log(n/(sum_words_present + 1)) # +1 to avoid divison by zero.
-
-        tf.loc[i, 'idf'] = log
-
-    return tf
-
-def tf_idf(arr):
-
-    """
-    takes an array of tweets and return the term frequency inverse document frequency (tf-idf) of a word in a tweet
-    Arguments:
-    arr: Series. array of tweets.
-
-    Returns:
-    a dataframe of the term frequency inverse document frequency (tf-idf) of words
-    """
-
-    tf = inverse_term_freq(arr)
-    tf['tf-idf'] = tf['tf'] * tf['idf']
-    return tf
-
 def get_arabic_words(arr, handle_emojies='emoticon', remove_repeated_char=True):
     """
     the purpose of this function is to get arabic words only out of texts.
@@ -260,14 +222,14 @@ def get_arabic_words(arr, handle_emojies='emoticon', remove_repeated_char=True):
     # keep only arabic words
     # print(f" : {arr}")
 
-
     if handle_emojies not in ['keep', 'remove', 'emoticon']:
-        raise ValueError(f'Passed argument {handle_emojies} not a recognised argument.')
-        
+        raise Exception(f'Passed argument {handle_emojies} not a recognised argument.')
+
     arr_text = [" ".join(word for word in re.split('#|_', text)) for text in arr]
     arr_text = [text.replace('،', ' ') for text in arr_text]
 
     arr_text = [_remove_punctuation(text) for text in arr_text]
+    arr_text = [_remove_tashkel(text) for text in arr_text]
 
     arr_list_of_words  = [re.findall(r'[\u0600-\u06FF]+', text) for text in arr_text]
 
@@ -349,8 +311,6 @@ def repeated_char(arr):
     arr = [re.sub(r'\d', " ", text) for text in arr]
     arr_list_of_words  = [re.findall(r'[\u0600-\u06FF]+', text) for text in arr]
 
-
-
     new_arr = []
     for list in arr_list_of_words:
         # words = [word for word in list if not word.isdigit()]
@@ -368,6 +328,18 @@ def _remove_punctuation(str):
     a string removed of punctuation
     """
     return ''.join(c for c in str if not ud.category(c).startswith('P'))
+
+def _remove_tashkel(str):
+    """
+    takes a str of text represent a tweet and return text removed of tashkel
+    Arguments:
+    arr: Series. array of tweets.
+
+    Returns:
+    a string removed of tashkel
+    """
+    tashkel = set(['ِ', 'ُ', 'ٓ', 'ٰ', 'ْ', 'ٌ', 'ٍ', 'ً', 'ّ', 'َ'])
+    return ''.join(c for c in str if c not in tashkel)
 
 def _get_emoticon(arr):
     """"
@@ -411,7 +383,6 @@ def df_to_pdf(df, filename):
     Returns:
     None
     """
-
     try:
         import pdfkit as pdf
 
