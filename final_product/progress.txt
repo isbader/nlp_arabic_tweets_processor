@@ -14,10 +14,10 @@ The next stage will try to add clean button and connect it to the script of clea
  
 
 ------------------------------
-Until now I knew how to apply the models on the dataset and can apply multiple model ,
-In addition I was looking for the easiest way to apply the visualization and I found one 
-Library that we can do with it without engaging with bootsttrab and json codes 
-I did some testing with random dataset to trying the models and the visualize part 
+Until now I knew how to apply the models on the dataset in flask and can apply multiple model ,
+In addition I was looking for the easiest library to to apply the visualization and I found one 
+Library that we can work on it  without engaging with bootsttrab and json codes 
+I did some testing with random dataset(iris)  to trying the models and the visualize part 
 
 Know I'm waiting the data file from yaser to see what we can visualize 
 
