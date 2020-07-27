@@ -6,11 +6,9 @@
 
 ### Task
 
-- **Build a data distribution system:** To allow for the training data set to be manually labelled in a professional manner by many users of the system
-
+- **Build a data distribution system:** Around 60,000 tweets were handed to students with a detailed testing system for testing the accuracy of labeling. 
 - **Modeling and feature extraction:** A verity of classification techniques will be applied for the best classification system
 
-- **Final Product of GUI:** The final product will be a user friendly program with a nice graphical user interface that could be used by event organizers to evaluate their events by analyzing relivent tweets.Visualization will be exploited to extract useful information automaticly.
 
 ### Team members:
 
